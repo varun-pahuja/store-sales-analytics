@@ -260,7 +260,29 @@ The returns total is attributed to **return_date**, so refunds can exceed the gr
 
 ## AI-assisted development and verification
 
-**Original Claude Code prompt:** Not available in the provided conversation. Do not represent the following as a verbatim Claude Code transcript. The documented project specification was: create a Next.js TypeScript repository, load the May–October 2025 Store Order History CSV, implement independent metrics with explicit start/end dates, and fix the as-of date at October 27, 2025 with Monday–Sunday weeks.
+### Full Claude Code prompt (reconstructed for reproducibility)
+
+The exact original Claude Code transcript was not provided. The following is a **complete prompt to give Claude Code**, reconstructed from the assignment requirements and the implemented code; it is **not claimed to be a verbatim historical prompt**.
+
+```text
+Create a complete Next.js App Router application in TypeScript named store-sales-analytics using the attached "Store Order History, May to October 2025.csv" as the sole data source. Keep a copy at src/data/store-orders.csv and parse it server-side. Each CSV row is an order line, so deduplicate order_id when counting orders. Write independently testable, exported functions in src/lib/metrics.ts. Every function must accept (orders: OrderLine[], startDate: string, endDate: string), with inclusive YYYY-MM-DD date boundaries.
+
+Implement these exact functions:
+1. repeatCustomers: number of distinct customer_id values with is_repeat_customer=true on at least one line ordered in the range; do not infer earlier purchases outside the supplied data.
+2. uniqueCustomers: number of distinct customer_id values with order_date in range.
+3. returnsByCategory: array of {category, returnedLines, returnedUnits, refunds}, grouped by product_category; select only returned=true rows whose return_date is in range, regardless of original order_date. Count original quantity as returned units because no partial-return quantity exists; sum refund_amount.
+4. dailySales: array of {date, orders, units, revenue} for every calendar day in the range, including zero-sale days; filter order_date; orders are distinct order_id, units sum quantity, revenue sums discounted line_total.
+5. unitsAndRevenueByProduct: array of {productId, productTitle, units, revenue} grouped by product_id, filtering order_date.
+6. unitsAndRevenueByCategory: array of {category, units, revenue} grouped by product_category, filtering order_date.
+7. salesSummary: object {orders, lineItems, units, revenue, uniqueCustomers, repeatCustomers}; count distinct orders, sum quantities and line_total using order_date.
+8. netRevenue: number equal to gross line_total for orders dated in range minus refund_amount for returns processed in range. Refunds may originate from earlier orders.
+
+Date rules: Freeze analytics "today" at 2025-10-27 (not the actual current date). Weeks are Monday through Sunday. Today = Oct 27; yesterday = Oct 26; this week to date = Oct 27–27 (full calendar week Oct 27–Nov 2); last week = Oct 20–26; previous week = Oct 13–19. This month to date = Oct 1–27; last month = Sep 1–30. Implement getPeriodRange with these presets and fullCalendarWeek. Use UTC calendar arithmetic so dates do not shift with timezone or daylight saving. Reject invalid or reversed date ranges.
+
+Business rules: Treat is_repeat_customer as authoritative; gross revenue is discounted line_total before refunds, including unfulfilled lines because there is no payment/cancellation field; group products by product_id and categories by product_category; round money to two decimals. The CSV does not specify a currency, so clearly disclose any UI currency assumption.
+
+Build a responsive server-rendered dashboard with preset and custom date filters, gross/net sales, order/unit/customer summaries, daily sales including zero days, product/category revenue, and returns by category. Add automated tests for CSV parsing, dates and boundaries, deduplication, returns on return_date, zero-sale dates, and revenue reconciliation. Provide a complete README explaining setup, metric signatures, date definitions, assumptions, tests, and known limitations. Run available checks and report honestly what could not be verified. Do not publish to GitHub without explicit approval.
+```
 
 **Checks and changes:** Verified last week resolves to October 20–26, 2025; confirmed returns use `return_date` instead of `order_date`; ran the metrics against the CSV and recorded the results above. The analytics test suite previously passed 9/9. The project owner subsequently provided terminal output confirming a successful Next.js production build (compilation, lint/type checks, and static page generation).
 
