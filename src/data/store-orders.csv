@@ -1,0 +1,29 @@
+order_id,line_item_id,order_date,customer_id,is_repeat_customer,product_id,product_title,product_category,variant,quantity,unit_price,discount_amount,line_total,sales_channel,fulfillment_status,returned,return_date,return_reason,refund_amount
+#1047,LI-500052,2025-05-06,C-10233,false,P-1006,Organic Cotton Tee,Tops,M / Black,2,28.00,0.00,56.00,Online Store,fulfilled,false,,,
+#1047,LI-500053,2025-05-06,C-10233,false,P-1009,Utility Chino,Bottoms,L / Olive,1,74.00,0.00,74.00,Online Store,fulfilled,false,,,
+#1188,LI-500209,2025-05-27,C-10518,false,P-1003,Harbor Rain Shell,Outerwear,M / Navy,1,94.00,0.00,94.00,Online Store,fulfilled,true,2025-07-08,Not as pictured,94.00
+#1342,LI-500381,2025-06-19,C-10087,true,P-1007,Linen Button Shirt,Tops,L / Navy,1,62.00,6.20,55.80,Shop app,fulfilled,false,,,
+#1342,LI-500382,2025-06-19,C-10087,true,P-1008,Selvedge Slim Jeans,Bottoms,M / Black,1,118.00,11.80,106.20,Shop app,fulfilled,false,,,
+#1529,LI-500590,2025-07-17,C-10764,false,P-1008,Selvedge Slim Jeans,Bottoms,L / Black,1,118.00,0.00,118.00,Point of Sale,fulfilled,false,,,
+#1803,LI-500896,2025-08-22,C-10233,true,P-1006,Organic Cotton Tee,Tops,S / Olive,1,28.00,0.00,28.00,Online Store,fulfilled,true,2025-09-11,Too large,28.00
+#1803,LI-500897,2025-08-22,C-10233,true,P-1009,Utility Chino,Bottoms,M / Navy,1,74.00,0.00,74.00,Online Store,fulfilled,false,,,
+#1966,LI-501070,2025-09-08,C-11042,false,P-1004,Merino Crew Sweater,Knitwear,M / Oatmeal,1,88.00,0.00,88.00,Instagram,fulfilled,false,,,
+#2214,LI-501347,2025-09-24,C-10391,true,P-1002,Northridge Insulated Jacket,Outerwear,L / Black,1,159.00,15.90,143.10,Online Store,fulfilled,true,2025-10-06,Changed mind,128.79
+#2402,LI-501556,2025-10-02,C-11187,false,P-1001,Alpine Down Parka,Outerwear,M / Black,1,219.00,0.00,219.00,Online Store,fulfilled,true,2025-10-21,Too small,219.00
+#2402,LI-501557,2025-10-02,C-11187,false,P-1010,Wool Beanie,Accessories,One Size / Charcoal,1,24.00,0.00,24.00,Online Store,fulfilled,false,,,
+#2455,LI-501614,2025-10-04,C-10642,true,P-1002,Northridge Insulated Jacket,Outerwear,S / Olive,1,159.00,23.85,135.15,Shop app,fulfilled,true,2025-10-23,Too small,135.15
+#2518,LI-501685,2025-10-07,C-11309,false,P-1001,Alpine Down Parka,Outerwear,L / Navy,1,219.00,0.00,219.00,Online Store,fulfilled,true,2025-10-24,Too large,219.00
+#2571,LI-501744,2025-10-09,C-10442,true,P-1005,Cable Knit Cardigan,Knitwear,M / Oatmeal,1,98.00,0.00,98.00,Point of Sale,fulfilled,false,,,
+#2571,LI-501745,2025-10-09,C-10442,true,P-1011,Leather Gloves,Accessories,One Size / Charcoal,1,46.00,0.00,46.00,Point of Sale,fulfilled,false,,,
+#2633,LI-501814,2025-10-11,C-10955,false,P-1002,Northridge Insulated Jacket,Outerwear,M / Navy,1,159.00,0.00,159.00,Online Store,fulfilled,false,,,
+#2706,LI-501896,2025-10-14,C-11276,false,P-1001,Alpine Down Parka,Outerwear,S / Black,1,219.00,0.00,219.00,Instagram,fulfilled,true,2025-10-26,Defective,219.00
+#2758,LI-501954,2025-10-15,C-10318,true,P-1008,Selvedge Slim Jeans,Bottoms,M / Black,2,118.00,23.60,212.40,Online Store,fulfilled,false,,,
+#2846,LI-502053,2025-10-18,C-11423,false,P-1006,Organic Cotton Tee,Tops,L / Black,1,28.00,0.00,28.00,Shop app,fulfilled,false,,,
+#2846,LI-502054,2025-10-18,C-11423,false,P-1004,Merino Crew Sweater,Knitwear,L / Navy,2,88.00,0.00,176.00,Shop app,partially_fulfilled,false,,,
+#2917,LI-502132,2025-10-21,C-10642,true,P-1002,Northridge Insulated Jacket,Outerwear,M / Olive,1,159.00,0.00,159.00,Online Store,unfulfilled,false,,,
+#2988,LI-502211,2025-10-23,C-11087,false,P-1001,Alpine Down Parka,Outerwear,M / Black,1,219.00,21.90,197.10,Online Store,unfulfilled,false,,,
+#2988,LI-502212,2025-10-23,C-11087,false,P-1011,Leather Gloves,Accessories,One Size / Charcoal,1,46.00,4.60,41.40,Online Store,fulfilled,false,,,
+#3054,LI-502306,2025-10-25,C-10771,true,P-1010,Wool Beanie,Accessories,One Size / Charcoal,3,24.00,0.00,72.00,Point of Sale,fulfilled,false,,,
+#3102,LI-502359,2025-10-26,C-11458,false,P-1009,Utility Chino,Bottoms,L / Black,1,74.00,0.00,74.00,Point of Sale,fulfilled,true,2025-10-27,Changed mind,74.00
+#3149,LI-502398,2025-10-27,C-11184,false,P-1003,Harbor Rain Shell,Outerwear,L / Navy,1,94.00,0.00,94.00,Online Store,unfulfilled,false,,,
+#3149,LI-502399,2025-10-27,C-11184,false,P-1005,Cable Knit Cardigan,Knitwear,S / Black,1,98.00,9.80,88.20,Online Store,unfulfilled,false,,,
