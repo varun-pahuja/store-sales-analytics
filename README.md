@@ -260,9 +260,15 @@ The returns total is attributed to **return_date**, so refunds can exceed the gr
 
 ## AI-assisted development and verification
 
+### Original user prompt (verbatim)
+
+The following is the exact prompt supplied by the project requester (including its original spelling):
+
+> tart a Next.js TypeScript repo, load Store Order History, May to October 2025 as the data, and write one function per metric, each taking a start and end date. now that u have a created a nextjs typescript repo load store order history may to october 2025 as the date and write one function per metric and each taking a stard and end date like the repeated coustomer followed by the returns on the product categoru and sales day by day or the unit plus revenue per product or per product category and also the date rules supoose the last week was mondat to sunday was from the 20 to 26 october 2025 so this month is of 1 to 27 and so fix today day 27 as this week monday to sunday and take last monday to sunday as kast week and and so on before that same goes for the today month the current running month and take its lprevious month as the last month and what i want is a filled readme and the the bugless code and everything pushed to github after i say approve
+
 ### Full Claude Code prompt (reconstructed for reproducibility)
 
-The exact original Claude Code transcript was not provided. The following is a **complete prompt to give Claude Code**, reconstructed from the assignment requirements and the implemented code; it is **not claimed to be a verbatim historical prompt**.
+The original user request is reproduced above; a separate verbatim Claude Code session transcript was not provided. The following is a **complete prompt to give Claude Code**, reconstructed from the assignment requirements and the implemented code; it is **not claimed to be a verbatim historical prompt**.
 
 ```text
 Create a complete Next.js App Router application in TypeScript named store-sales-analytics using the attached "Store Order History, May to October 2025.csv" as the sole data source. Keep a copy at src/data/store-orders.csv and parse it server-side. Each CSV row is an order line, so deduplicate order_id when counting orders. Write independently testable, exported functions in src/lib/metrics.ts. Every function must accept (orders: OrderLine[], startDate: string, endDate: string), with inclusive YYYY-MM-DD date boundaries.
