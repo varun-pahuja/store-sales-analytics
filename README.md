@@ -123,20 +123,146 @@ store-sales-analytics/
 
 `npm test` verifies the 28-row load, escaped/quoted CSV fields, invalid date handling, date presets and year boundaries, order deduplication, repeat customer deduplication, return-date filtering (including earlier-month orders), zero-sales dates, and revenue/unit reconciliation across breakdowns.
 
-## Publishing to GitHub (approval required)
+## GitHub repository and submission
 
-**No remote repository has been created and nothing has been pushed.** After the owner explicitly approves publishing, create an empty GitHub repository and push from the project directory:
+The project repository is live at **https://github.com/varun-pahuja/store-sales-analytics** on the `main` branch. The owner approved publishing. Submit that repository URL using the course's **Submit** button; this README update does not itself submit the assignment.
+
+## Last-week metrics: actual terminal output
+
+Run from the project root using Node.js 22+ (the built-in TypeScript stripping feature is experimental):
 
 ```bash
-git init
-git add .
-git commit -m "Build store sales analytics dashboard"
-git branch -M main
-git remote add origin https://github.com/YOUR_USERNAME/store-sales-analytics.git
-git push -u origin main
+node --experimental-strip-types --input-type=module -e "import {loadOrders} from './src/lib/orders.ts'; import {getPeriodRange} from './src/lib/dates.ts'; import * as m from './src/lib/metrics.ts'; const orders=loadOrders(); const {startDate,endDate}=getPeriodRange('lastWeek'); console.log(JSON.stringify({period:[startDate,endDate],summary:m.salesSummary(orders,startDate,endDate),returnsByCategory:m.returnsByCategory(orders,startDate,endDate),dailySales:m.dailySales(orders,startDate,endDate),products:m.unitsAndRevenueByProduct(orders,startDate,endDate),categories:m.unitsAndRevenueByCategory(orders,startDate,endDate),netRevenue:m.netRevenue(orders,startDate,endDate)},null,2))"
 ```
 
-Replace `YOUR_USERNAME` with your GitHub username. Publishing requires authenticated GitHub access and a network connection. **Do not publish before approval.**
+Actual output (captured from the supplied CSV):
+
+```json
+{
+  "period": [
+    "2025-10-20",
+    "2025-10-26"
+  ],
+  "summary": {
+    "orders": 4,
+    "lineItems": 5,
+    "units": 7,
+    "revenue": 543.5,
+    "uniqueCustomers": 4,
+    "repeatCustomers": 2
+  },
+  "returnsByCategory": [
+    {
+      "category": "Outerwear",
+      "returnedLines": 4,
+      "returnedUnits": 4,
+      "refunds": 792.15
+    }
+  ],
+  "dailySales": [
+    {
+      "date": "2025-10-20",
+      "orders": 0,
+      "units": 0,
+      "revenue": 0
+    },
+    {
+      "date": "2025-10-21",
+      "orders": 1,
+      "units": 1,
+      "revenue": 159
+    },
+    {
+      "date": "2025-10-22",
+      "orders": 0,
+      "units": 0,
+      "revenue": 0
+    },
+    {
+      "date": "2025-10-23",
+      "orders": 1,
+      "units": 2,
+      "revenue": 238.5
+    },
+    {
+      "date": "2025-10-24",
+      "orders": 0,
+      "units": 0,
+      "revenue": 0
+    },
+    {
+      "date": "2025-10-25",
+      "orders": 1,
+      "units": 3,
+      "revenue": 72
+    },
+    {
+      "date": "2025-10-26",
+      "orders": 1,
+      "units": 1,
+      "revenue": 74
+    }
+  ],
+  "products": [
+    {
+      "productId": "P-1001",
+      "productTitle": "Alpine Down Parka",
+      "units": 1,
+      "revenue": 197.1
+    },
+    {
+      "productId": "P-1002",
+      "productTitle": "Northridge Insulated Jacket",
+      "units": 1,
+      "revenue": 159
+    },
+    {
+      "productId": "P-1009",
+      "productTitle": "Utility Chino",
+      "units": 1,
+      "revenue": 74
+    },
+    {
+      "productId": "P-1010",
+      "productTitle": "Wool Beanie",
+      "units": 3,
+      "revenue": 72
+    },
+    {
+      "productId": "P-1011",
+      "productTitle": "Leather Gloves",
+      "units": 1,
+      "revenue": 41.4
+    }
+  ],
+  "categories": [
+    {
+      "category": "Outerwear",
+      "units": 2,
+      "revenue": 356.1
+    },
+    {
+      "category": "Accessories",
+      "units": 4,
+      "revenue": 113.4
+    },
+    {
+      "category": "Bottoms",
+      "units": 1,
+      "revenue": 74
+    }
+  ],
+  "netRevenue": -248.65
+}
+```
+
+The returns total is attributed to **return_date**, so refunds can exceed the gross sales booked during this particular week.
+
+## AI-assisted development and verification
+
+**Original Claude Code prompt:** Not available in the provided conversation. Do not represent the following as a verbatim Claude Code transcript. The documented project specification was: create a Next.js TypeScript repository, load the May–October 2025 Store Order History CSV, implement independent metrics with explicit start/end dates, and fix the as-of date at October 27, 2025 with Monday–Sunday weeks.
+
+**Checks and changes:** Verified last week resolves to October 20–26, 2025; confirmed returns use `return_date` instead of `order_date`; ran the metrics against the CSV and recorded the results above. The analytics test suite previously passed 9/9. A full Next.js production build has not yet been independently verified.
 
 ## Limitations and possible extensions
 
