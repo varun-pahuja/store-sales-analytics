@@ -29,7 +29,7 @@ npm run build     # Production build
 npm start         # Serve production build
 ```
 
-> **Validation status:** The 9 analytics tests passed in the authoring environment. The environment could not reach `registry.npmjs.org`, so dependencies could not be installed and `typecheck`, `lint`, and `build` could not be executed there. Run these commands after `npm install` on a connected machine; a passing analytics test suite alone does not establish a bug-free production build.
+> **Validation status:** The 9 analytics tests passed in the authoring environment. The original authoring environment could not reach `registry.npmjs.org`. Subsequently, the project owner ran a successful Next.js production build locally: compiled in 2.2 seconds, linting and type checks passed, page data collected, static pages generated (4/4), and optimization finalized. This confirms the production build succeeded on the owner's machine; it does not guarantee the application is free of runtime bugs.
 
 ## Date rules (inclusive)
 
@@ -262,7 +262,7 @@ The returns total is attributed to **return_date**, so refunds can exceed the gr
 
 **Original Claude Code prompt:** Not available in the provided conversation. Do not represent the following as a verbatim Claude Code transcript. The documented project specification was: create a Next.js TypeScript repository, load the May–October 2025 Store Order History CSV, implement independent metrics with explicit start/end dates, and fix the as-of date at October 27, 2025 with Monday–Sunday weeks.
 
-**Checks and changes:** Verified last week resolves to October 20–26, 2025; confirmed returns use `return_date` instead of `order_date`; ran the metrics against the CSV and recorded the results above. The analytics test suite previously passed 9/9. A full Next.js production build has not yet been independently verified.
+**Checks and changes:** Verified last week resolves to October 20–26, 2025; confirmed returns use `return_date` instead of `order_date`; ran the metrics against the CSV and recorded the results above. The analytics test suite previously passed 9/9. The project owner subsequently provided terminal output confirming a successful Next.js production build (compilation, lint/type checks, and static page generation).
 
 ## Limitations and possible extensions
 
